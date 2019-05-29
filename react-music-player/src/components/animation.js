@@ -1,6 +1,6 @@
 import Sketch from 'sketch-js';
 
-var ALPHA,
+let ALPHA,
   AudioAnalyser,
   COLORS,
   MP3_PATH,
@@ -67,7 +67,6 @@ COLORS = [
 
 
 function getAnimation(file) {
-  debugger
   AudioAnalyser = (function() {
     AudioAnalyser.AudioContext = window.self.AudioContext || window.self.webkitAudioContext;
 
@@ -139,22 +138,22 @@ function getAnimation(file) {
     }
 
     Particle.prototype.reset = function() {
-      this.level = 1 + Math.floor(Math.random(4));
-      this.scale = Math.random(SCALE.MIN, SCALE.MAX);
-      this.alpha = Math.random(ALPHA.MIN, ALPHA.MAX);
-      this.speed = Math.random(SPEED.MIN, SPEED.MAX);
-      this.color = Math.random(COLORS);
-      this.size = Math.random(SIZE.MIN, SIZE.MAX);
-      this.spin = Math.random(SPIN.MAX, SPIN.MAX);
-      this.band = Math.floor(Math.random(NUM_BANDS));
-      if (Math.random() < 0.5) {
+      this.level = 1 + window.floor(window.random(4));
+      this.scale = window.random(SCALE.MIN, SCALE.MAX);
+      this.alpha = window.random(ALPHA.MIN, ALPHA.MAX);
+      this.speed = window.random(SPEED.MIN, SPEED.MAX);
+      this.color = window.random(COLORS);
+      this.size = window.random(SIZE.MIN, SIZE.MAX);
+      this.spin = window.random(SPIN.MAX, SPIN.MAX);
+      this.band = window.floor(window.random(NUM_BANDS));
+      if (window.random() < 0.5) {
         this.spin = -this.spin;
       }
       this.smoothedScale = 0.0;
       this.smoothedAlpha = 0.0;
       this.decayScale = 0.0;
       this.decayAlpha = 0.0;
-      this.rotation = Math.random(2*Math.pi);
+      this.rotation = window.random(2*window.pi);
       return (this.energy = 0.0);
     };
 
@@ -165,18 +164,18 @@ function getAnimation(file) {
 
     Particle.prototype.draw = function(ctx) {
       var alpha, power, scale;
-      power = Math.exp(this.energy);
+      power = window.exp(this.energy);
       scale = this.scale * power;
       alpha = this.alpha * this.energy * 1.5;
-      this.decayScale = Math.max(this.decayScale, scale);
-      this.decayAlpha = Math.max(this.decayAlpha, alpha);
+      this.decayScale = window.max(this.decayScale, scale);
+      this.decayAlpha = window.max(this.decayAlpha, alpha);
       this.smoothedScale += (this.decayScale - this.smoothedScale) * 0.3;
       this.smoothedAlpha += (this.decayAlpha - this.smoothedAlpha) * 0.3;
       this.decayScale *= 0.985;
       this.decayAlpha *= 0.975;
       ctx.save();
       ctx.beginPath();
-      ctx.translate(this.x + Math.cos(this.rotation * this.speed) * 250, this.y);
+      ctx.translate(this.x + window.cos(this.rotation * this.speed) * 250, this.y);
       ctx.rotate(this.rotation);
       ctx.scale(
         this.smoothedScale * this.level,
@@ -200,10 +199,10 @@ function getAnimation(file) {
     setup: function() {
       var analyser, error, i, intro, j, particle, ref, warning, x, y;
       for (i = j = 0, ref = NUM_PARTICLES - 1; j <= ref; i = j += 1) {
-        x = Math.random(this.width);
-        y = Math.random(this.height * 2);
+        x = window.random(this.width);
+        y = window.random(this.height * 2);
         particle = new Particle(x, y);
-        particle.energy = Math.random(particle.band / 256);
+        particle.energy = window.random(particle.band / 256);
         this.particles.push(particle);
       }
       if (AudioAnalyser.enabled) {
@@ -249,7 +248,7 @@ function getAnimation(file) {
         particle = ref[j];
         if (particle.y < -particle.size * particle.level * particle.scale * 2) {
           particle.reset();
-          particle.x = Math.random(this.width);
+          particle.x = window.random(this.width);
           particle.y =
             this.height + particle.size * particle.scale * particle.level;
         }
