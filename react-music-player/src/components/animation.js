@@ -265,7 +265,7 @@ function handleFileSelect(evt) {
   getAnimation(files[0]);
 }
 
-//getAnimation(null);
+
 
 
 
