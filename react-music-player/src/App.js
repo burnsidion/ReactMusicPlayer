@@ -25,20 +25,9 @@ class App extends Component {
       this.audio.pause();
       this.setState({isMusicPlaying: false})
     }
+
   }
 
-//   handleClick() {
-//   if (this.state.isMusicPlaying) {
-//     this.audio.pause();
-//   } else {
-//     this.audio.play();
-//   }
-//   this.setState(prevState => {
-//     return {
-//       isMusicPlaying: !prevState.isMusicPlaying
-//     };
-//   });
-// };
 
 
   render() {

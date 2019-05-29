@@ -17,8 +17,8 @@ export default class PlayButton extends React.Component {
     return (<div>
       {
         this.props.isPlaying === true
-          ? <IconButton onClick={this.props.toggleButton}><PlayCircleFilled fontSize='large'/></IconButton>
-          : <IconButton onClick={this.props.toggleButton}><PauseCircleFilled fontSize='large'/></IconButton>
+          ? <IconButton onClick={this.props.toggleButton}><PauseCircleFilled fontSize='large'/></IconButton>
+          : <IconButton onClick={this.props.toggleButton}><PlayCircleFilled fontSize='large'/></IconButton>
       }
     </div>)
   }
