@@ -10,11 +10,11 @@ class App extends Component {
       isMusicPlaying: false
     };
     this.clickHandle = this.clickHandle.bind(this)
+    getAnimation()
   }
 
   componentDidMount() {
     document.getElementById('files').addEventListener('change', handleFileSelect, false);
-
   }
 
   clickHandle(event) {
@@ -24,7 +24,6 @@ class App extends Component {
     } else {
       this.audio.pause();
       this.setState({isMusicPlaying: false})
-
     }
 
   }
