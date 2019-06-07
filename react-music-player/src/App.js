@@ -17,17 +17,16 @@ class App extends Component {
     document.getElementById('files').addEventListener('change', handleFileSelect, false);
   }
 
-  clickHandle(event) {
+  async clickHandle(event) {
     if (this.state.isMusicPlaying === false) {
-      this.audio.play();
+      await this.audio.play();
       this.setState({isMusicPlaying: true})
     } else {
-      this.audio.pause();
+      await this.audio.pause();
       this.setState({isMusicPlaying: false})
     }
 
   }
-
 
   render() {
     return (<div id="container">

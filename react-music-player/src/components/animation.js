@@ -1,6 +1,6 @@
 //Thanks to Justin Windle for this visualization code, view the original here : https://codepen.io/soulwire/pen/Dscga
 
-//Minor adjustments were required for transposition 
+//Minor adjustments were required for transposition
 
 import Sketch from 'sketch-js';
 
